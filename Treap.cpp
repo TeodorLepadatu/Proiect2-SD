@@ -75,14 +75,17 @@ Treap* insert(Treap* root, int key,int val)
     }
     return root;
 }
-Treap* search(Treap* node, int key)
-{
-    if(node->key==key)
+
+Treap* search(Treap* node, int key) {
+    if(node == nullptr) 
+        return nullptr;
+
+    if(node->key == key)
         return node;
-    if(key<node->key)
-        return search(node->left,key);
+    if(key < node->key)
+        return search(node->left, key);
     else
-        return search(node->right,key);
+        return search(node->right, key);
 }
 
 Treap* Delete(Treap* root, int key)
