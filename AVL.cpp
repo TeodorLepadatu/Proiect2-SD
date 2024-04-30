@@ -2,34 +2,46 @@
 --AVL-ul este un arbore in care diferenta dintre subarborii determinati de orice nod este maxim -1, 0 sau 1.
 */
 #include <iostream>
+#include <fstream>
+std::ifstream fin("abce.in");
+std::ofstream fout("abce.out");
 struct Node{
-    int key;
+    long long key;
     Node *left, *right;
-    int height;
+    long long height;
 };
 void print(Node* root) {
     if (root->left != NULL)
         print(root->left);
-    std::cout << root->key << " ";
+    fout << root->key << " ";
     if (root->right != NULL)
         print(root->right);
+}
+void afis_interval(long long m, long long n, Node* root)
+{
+    if(root->left!=NULL)
+        afis_interval(m,n,root->left);
+    if(m <= root->key && root->key <= n)
+        fout<<root->key<<" ";
+    if(root->right!=NULL)
+        afis_interval(m,n,root->right);
 }
 void RSD(Node *root)
 {
     if(root!=NULL)
     {
-        std::cout<<root->key<<" ";
+        fout<<root->key<<" ";
         RSD(root->left);
         RSD(root->right);
     }
 }
-int find_height(Node *node)
+long long find_height(Node *node)
 {
     if (node == NULL)
         return 0;
     return node->height;
 }
-int balance(Node *node)
+long long balance(Node *node)
 {
     if (node == NULL)
         return 0;
@@ -121,7 +133,7 @@ Node *rotatie_stanga(Node *x)
     // radacina
     return y;
 }
-Node* newNode(int key)
+Node* newNode(long long key)
 {
     Node* node = new Node();
     node->key = key;
@@ -130,7 +142,7 @@ Node* newNode(int key)
     node->height = 1;
     return(node);
 }
-Node* insert(int n, Node* nod)
+Node* insert(long long n, Node* nod)
 {
     if (nod == NULL)
         return(newNode(n));
@@ -142,7 +154,7 @@ Node* insert(int n, Node* nod)
     else
         return nod;
     nod->height = 1 + std::max(find_height(nod->left),find_height(nod->right));
-    int b= balance(nod);
+    long long b= balance(nod);
     // Left Left Case
     if (b > 1 && n < nod->left->key)
         return rotatie_dreapta(nod);
@@ -167,7 +179,7 @@ Node* insert(int n, Node* nod)
     return nod;
 }
 
-Node* search(int n, Node* root) {
+Node* search(long long n, Node* root) {
     while (root != nullptr && root->key != n) {
         if (n > root->key)
             root = root->right;
@@ -179,29 +191,132 @@ Node* search(int n, Node* root) {
     else
         return nullptr;
 }
-
-Node * succesor(Node* node)
-{
-    Node* current = node;
-    while (current->left != NULL)
-        current = current->left;
-
-    return current;
+Node* succesor(long long n, Node*root) {
+    Node *succ= search(n,root);
+    if(succ->right)
+    {
+        succ=succ->right;
+        while(succ->left)
+            succ=succ->left;
+        return succ;
+    }
+    else
+    {
+        Node* ancestor=root;
+        Node* succ=NULL;
+        while (ancestor != succ) {
+            if (n < ancestor->key) {
+                succ = ancestor;
+                ancestor = ancestor->left;
+            } else {
+                ancestor = ancestor->right;
+            }
+        }
+        return succ;
+    }
 }
-Node* erase(int n, Node* root)
+long long fix_mai_mare(long long n, Node* root)
 {
+    long long dif=root->key-n;
+    Node* candidat=root;
+    Node* afis=root;
+    while(candidat->right || candidat->left)
+    {
+        if(n<=candidat->key && candidat->left)
+        {
+            if(candidat->left->key-n<=dif && candidat->left->key-n>=0)
+            {
+                afis=candidat->left;
+                dif=candidat->left->key-n;
+                candidat=candidat->left;
+            }
+            else
+                candidat=candidat->left;
 
+        }
+        else if(n>=candidat->key && candidat->right)
+        {
+            if(candidat->right->key-n<=dif && candidat->right->key-n>=0)
+            {
+                afis=candidat->right;
+                dif=candidat->right->key-n;
+                candidat=candidat->right;
+            }
+            else
+                candidat=candidat->right;
+        }
+    }
+    return afis->key;
+}
+long long fix_mai_mic(long long n, Node* root)
+{
+    long long dif=root->key-n;
+    Node* candidat=root;
+    Node* afis=root;
+    while(candidat->right!=NULL || candidat->left!=NULL)
+    {
+        if(n<=candidat->key && candidat->left)
+        {
+            if(candidat->left->key-n<=dif && candidat->left->key-n<=0)
+            {
+                afis=candidat->left;
+                dif=candidat->left->key-n;
+                candidat=candidat->left;
+            }
+            else
+                candidat=candidat->left;
+
+        }
+        else if(n>=candidat->key && candidat->right)
+        {
+            if(candidat->right->key-n<=dif && candidat->right->key-n<=0)
+            {
+                afis=candidat->right;
+                dif=candidat->right->key-n;
+                candidat=candidat->right;
+            }
+            else
+                candidat=candidat->right;
+        }
+    }
+    return afis->key;
+}
+Node* predecesor(long long n, Node* root)
+{
+    Node* node= search(n,root);
+    if(node->left)
+    {
+        Node* pred=node->left;
+        while(pred->right)
+            pred=pred->right;
+        return pred;
+    }
+    else {
+        Node *ancestor = root;
+        Node *pred = NULL;
+        while (ancestor != pred) {
+            if (n > ancestor->key) {
+                pred = ancestor;
+                ancestor = ancestor->right;
+            } else {
+                ancestor = ancestor->left;
+            }
+        }
+        return pred;
+    }
+}
+Node* erase(long long n, Node* root, Node*aux)
+{
     if (root == NULL)
         return root;
     if ( n < root->key )
-        root->left = erase(n, root->left);
+        root->left = erase(n, root->left,aux);
     else if( n > root->key )
-        root->right = erase(n, root->right);
+        root->right = erase(n, root->right,aux);
     else
     {
         // daca nodul are un singur fiu sau niciunul
-        if( (root->left == NULL) ||
-            (root->right == NULL) )
+        if( (root->left == NULL) || (root->right == NULL) )
         {
             Node *temp = root->left ? root->left : root->right;
 
@@ -218,9 +333,9 @@ Node* erase(int n, Node* root)
         else
         {
             //daca nodul are doi  fii
-            Node* temp = succesor(root->right);
+            Node* temp = succesor(root->key, aux);
             root->key = temp->key;
-            root->right = erase(temp->key, root->right);
+            root->right = erase(temp->key, root->right,aux);
         }
     }
     //daca am ramas cu un singur nod, well
@@ -232,7 +347,7 @@ Node* erase(int n, Node* root)
 
     //fac balance ca sa vad daca e unbalaced AVL-ul
     //daca este, trec la cele 4 cazuri de rotatie
-    int b = balance(root);
+    long long b = balance(root);
 
     // Left Left Case
     if (b > 1 &&
@@ -261,22 +376,56 @@ Node* erase(int n, Node* root)
     }
     return root;
 }
+
 int main() {
     Node* root=NULL;
-    root=insert(12, root);
-    root=insert(8,root);
-    root=insert(11,root);
-    root=insert(5,root);
-    root=insert(4,root);
-    root=insert(18,root);
-    root=insert(17,root);
-    RSD(root);
-    std::cout<<std::endl;
-    print(root);
-    std::cout<<std::endl;
-    erase(12,root);
-    RSD(root);
-    std::cout<<std::endl;
-    std::cout<<balance(root);
+    long long q;
+    fin>>q;
+    long long type;
+    for(long long i=1;i<=q;i++)
+    {
+        fin>>type;
+        if(type==1)
+        {
+            long long x;
+            fin>>x;
+            root=insert(x,root);
+        }
+        else if(type==2)
+        {
+            long long x;
+            fin>>x;
+            root= erase(x,root,root);
+        }
+        else if(type==3)
+        {
+            long long x;
+            fin>>x;
+            Node* test= search(x,root);
+            if(test)
+                fout<<1<<std::endl;
+            else
+                fout<<0<<std::endl;
+        }
+        else if(type==4)
+        {
+            long long x;
+            fin>>x;
+            fout<<fix_mai_mic(x,root)<<std::endl;
+        }
+        else if(type==5)
+        {
+            long long x;
+            fin>>x;
+            fout<<fix_mai_mare(x,root)<<std::endl;
+        }
+        else if(type==6)
+        {
+            long long x,y;
+            fin>>x>>y;
+            afis_interval(x,y,root);
+            fout<<std::endl;
+        }
+    }
     return 0;
 }
