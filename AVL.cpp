@@ -167,16 +167,19 @@ Node* insert(int n, Node* nod)
     return nod;
 }
 
-Node* search(int n, Node* root)
-{
-    while (root != NULL && root->key != n) {
+Node* search(int n, Node* root) {
+    while (root != nullptr && root->key != n) {
         if (n > root->key)
             root = root->right;
         else
             root = root->left;
     }
-    return root;
+    if (root != nullptr && root->key == n)
+        return root;
+    else
+        return nullptr;
 }
+
 Node * succesor(Node* node)
 {
     Node* current = node;
