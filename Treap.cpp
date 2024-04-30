@@ -133,6 +133,7 @@ Treap* Delete(Treap* root, int key)
 
     return root;
 }
+/*
 void split(Treap* &R, Treap* &Ts, Treap* &Tg, int key) {    //face split dupa radacina
     const long long infinity = 9223372036854775807;
     R=insert(R, key, infinity);
@@ -143,6 +144,7 @@ void join(Treap* &R, Treap* Ts, Treap* Tg, int key) {   //face join cu o cheie c
     R = new Treap(key, 0, Ts, Tg);
     Delete(R, R->key);
 }
+*/
 int main() {
     Treap* root=NULL;
     root=insert(root,50,15);
