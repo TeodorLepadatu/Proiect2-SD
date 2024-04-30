@@ -1,9 +1,14 @@
 #include <iostream>
-struct Treap
-{
-    int key,p;
+struct Treap {
+    int key, p;
     Treap *left, *right;
-};
+    Treap() {}
+    Treap(int key, int p, Treap* left, Treap* right) {
+        this->key = key;
+        this->p = p;
+        this->left = left, this->right = right;
+    }
+} *R, *nil; // nil indica un nod 'gol'
 void SRD(Treap* root)
 {
     if(root!=NULL) {
@@ -75,9 +80,8 @@ Treap* insert(Treap* root, int key,int val)
     }
     return root;
 }
-
 Treap* search(Treap* node, int key) {
-    if(node == nullptr) 
+    if(node == nullptr)
         return nullptr;
 
     if(node->key == key)
@@ -99,7 +103,7 @@ Treap* Delete(Treap* root, int key)
     else if (key > root->key)
         root->right = Delete(root->right, key);
 
-    // daca cheia e la radacina (CODUL LUI DUMITRAN NU TRATEAZA CAZUL ASTA SI IMI DA SEGFAULT, DECI NICI NU STITI CAT M AM ENERVAT CU TREABA ASTA
+        // daca cheia e la radacina (CODUL LUI DUMITRAN NU TRATEAZA CAZUL ASTA SI IMI DA SEGFAULT, DECI NICI NU STITI CAT M AM ENERVAT CU TREABA ASTA
 
     else if (root->left == NULL)
     {
@@ -129,7 +133,16 @@ Treap* Delete(Treap* root, int key)
 
     return root;
 }
-
+void split(Treap* &R, Treap* &Ts, Treap* &Tg, int key) {    //face split dupa radacina
+    const long long infinity = 9223372036854775807;
+    R=insert(R, key, infinity);
+    Ts = R->left, Tg = R->right;
+    delete R, R = nil;
+}
+void join(Treap* &R, Treap* Ts, Treap* Tg, int key) {   //face join cu o cheie convenabila, ca altfel nu merge
+    R = new Treap(key, 0, Ts, Tg);
+    Delete(R, R->key);
+}
 int main() {
     Treap* root=NULL;
     root=insert(root,50,15);
@@ -141,5 +154,6 @@ int main() {
     SRD(root);
     std::cout<<std::endl;
     RSD(root);
+    std::cout<<search(root,50);
     return 0;
 }
