@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
+std::ifstream fin("date.in");
+std::ofstream fout("date.out");
 struct Treap {
-    int key, p;
+    int key, p; //p=pritoriy
     Treap *left, *right;
     Treap() {}
     Treap(int key, int p, Treap* left, Treap* right) {
@@ -23,8 +26,10 @@ void RSD(Treap* root)
     if(root!=NULL)
     {
         std::cout<<root->key<<" "<<root->p<<std::endl;
-        if (root->left) RSD(root->left);
-        if (root->right) RSD(root->right);
+        if (root->left)
+            RSD(root->left);
+        if (root->right)
+            RSD(root->right);
     }
 }
 Treap* New_node(int x, int val)
@@ -83,7 +88,6 @@ Treap* insert(Treap* root, int key,int val)
 Treap* search(Treap* node, int key) {
     if(node == nullptr)
         return nullptr;
-
     if(node->key == key)
         return node;
     if(key < node->key)
@@ -133,7 +137,6 @@ Treap* Delete(Treap* root, int key)
 
     return root;
 }
-/*
 void split(Treap* &R, Treap* &Ts, Treap* &Tg, int key) {    //face split dupa radacina
     const long long infinity = 9223372036854775807;
     R=insert(R, key, infinity);
@@ -144,18 +147,36 @@ void join(Treap* &R, Treap* Ts, Treap* Tg, int key) {   //face join cu o cheie c
     R = new Treap(key, 0, Ts, Tg);
     Delete(R, R->key);
 }
-*/
 int main() {
     Treap* root=NULL;
-    root=insert(root,50,15);
-    root=insert(root,30,5);
-    root=insert(root,20,2);
-    root=insert(root,40,4);
-    root=insert(root,70,10);
-    root=Delete(root,50);
-    SRD(root);
-    std::cout<<std::endl;
-    RSD(root);
-    std::cout<<search(root,50);
+    long long n;
+    fin>>n;
+    for(long long i=1;i<=n;i++)
+    {
+        int type;
+        fin>>type;
+        if(type==1)
+        {
+            int x,y;
+            fin>>x>>y;
+            root=insert(root,x,y);
+        }
+        else if(type==2)
+        {
+            int x;
+            fin>>x;
+            root=Delete(root,x);
+        }
+        else if(type==3)
+        {
+            int x;
+            fin>>x;
+            Treap* afis=search(root,x);
+            if(afis == nullptr)
+                fout<<0<<std::endl;
+            else
+                fout<<1<<std::endl;
+        }
+    }
     return 0;
 }
