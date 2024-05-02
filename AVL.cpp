@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <climits>
-#include <unordered_map>
 std::ifstream fin("abce.in");
 std::ofstream fout("abce.out");
 struct Node{
@@ -218,53 +217,52 @@ Node* succesor(long long n, Node*root) {
     }
 }
 long long fix_mai_mare(long long n, Node* root) {
-    if (!root) // Handle case when the tree is empty
-        return LLONG_MAX; // Return some sentinel value indicating no such element exists
+    if (!root) 
+        return LLONG_MAX; 
 
-    long long dif = LLONG_MAX; // Initialize dif to maximum value
-    long long closest = LLONG_MAX; // Initialize closest to maximum value
+    long long dif = LLONG_MAX; 
+    long long closest = LLONG_MAX; 
     Node* candidat = root;
 
     while (candidat) {
-        long long current_dif = candidat->key - n; // Calculate difference from current node to n
+        long long current_dif = candidat->key - n; 
         if (current_dif >= 0 && current_dif <= dif) {
-            dif = current_dif; // Update dif if current node is closer to n and greater than n
-            closest = candidat->key; // Update closest
+            dif = current_dif; 
+            closest = candidat->key; 
         }
 
         if (candidat->key > n) {
-            candidat = candidat->left; // Traverse left subtree
+            candidat = candidat->left; 
         } else {
-            candidat = candidat->right; // Traverse right subtree
+            candidat = candidat->right;
         }
     }
 
-    return closest == LLONG_MAX ? LLONG_MAX : closest; // Return closest or sentinel value if not found
+    return closest;
 }
 
 long long fix_mai_mic(long long n, Node* root) {
-    if (!root) // Handle case when the tree is empty
-        return LLONG_MIN; // Return some sentinel value indicating no such element exists
+    if (!root) 
+        return LLONG_MIN; 
 
-    long long dif = -LLONG_MAX; // Initialize dif to maximum value
-    long long closest = LLONG_MAX; // Initialize closest to maximum value
+    long long dif = -LLONG_MAX; 
+    long long closest = LLONG_MAX; // e doar limita, do not panic
     Node* candidat = root;
-    std::unordered_map<long long, long long> map;
     while (candidat) {
-        long long current_dif = candidat->key - n; // Calculate difference from current node to n
+        long long current_dif = candidat->key - n; 
         if(current_dif <= 0 && std::abs(current_dif) <= std::abs(dif))
         {
             closest=candidat->key;
             dif=current_dif;
         }
         if (candidat->key > n) {
-            candidat = candidat->left; // Traverse left subtree
+            candidat = candidat->left; 
         } else {
-            candidat = candidat->right; // Traverse right subtree
+            candidat = candidat->right; 
         }
     }
 
-    return closest; // Return closest or sentinel value if not found
+    return closest; 
 }
 
 Node* predecesor(long long n, Node* root)
