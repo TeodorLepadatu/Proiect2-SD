@@ -3,6 +3,8 @@
 */
 #include <iostream>
 #include <fstream>
+#include <climits>
+#include <unordered_map>
 std::ifstream fin("abce.in");
 std::ofstream fout("abce.out");
 struct Node{
@@ -215,72 +217,56 @@ Node* succesor(long long n, Node*root) {
         return succ;
     }
 }
-long long fix_mai_mare(long long n, Node* root)
-{
-    long long dif=root->key-n;
-    Node* candidat=root;
-    Node* afis=root;
-    while(candidat->right || candidat->left)
-    {
-        if(n<=candidat->key && candidat->left)
-        {
-            if(candidat->left->key-n<=dif && candidat->left->key-n>=0)
-            {
-                afis=candidat->left;
-                dif=candidat->left->key-n;
-                candidat=candidat->left;
-            }
-            else
-                candidat=candidat->left;
+long long fix_mai_mare(long long n, Node* root) {
+    if (!root) // Handle case when the tree is empty
+        return LLONG_MAX; // Return some sentinel value indicating no such element exists
 
+    long long dif = LLONG_MAX; // Initialize dif to maximum value
+    long long closest = LLONG_MAX; // Initialize closest to maximum value
+    Node* candidat = root;
+
+    while (candidat) {
+        long long current_dif = candidat->key - n; // Calculate difference from current node to n
+        if (current_dif >= 0 && current_dif <= dif) {
+            dif = current_dif; // Update dif if current node is closer to n and greater than n
+            closest = candidat->key; // Update closest
         }
-        else if(n>=candidat->key && candidat->right)
-        {
-            if(candidat->right->key-n<=dif && candidat->right->key-n>=0)
-            {
-                afis=candidat->right;
-                dif=candidat->right->key-n;
-                candidat=candidat->right;
-            }
-            else
-                candidat=candidat->right;
+
+        if (candidat->key > n) {
+            candidat = candidat->left; // Traverse left subtree
+        } else {
+            candidat = candidat->right; // Traverse right subtree
         }
     }
-    return afis->key;
-}
-long long fix_mai_mic(long long n, Node* root)
-{
-    long long dif=root->key-n;
-    Node* candidat=root;
-    Node* afis=root;
-    while(candidat->right!=NULL || candidat->left!=NULL)
-    {
-        if(n<=candidat->key && candidat->left)
-        {
-            if(candidat->left->key-n<=dif && candidat->left->key-n<=0)
-            {
-                afis=candidat->left;
-                dif=candidat->left->key-n;
-                candidat=candidat->left;
-            }
-            else
-                candidat=candidat->left;
 
-        }
-        else if(n>=candidat->key && candidat->right)
+    return closest == LLONG_MAX ? LLONG_MAX : closest; // Return closest or sentinel value if not found
+}
+
+long long fix_mai_mic(long long n, Node* root) {
+    if (!root) // Handle case when the tree is empty
+        return LLONG_MIN; // Return some sentinel value indicating no such element exists
+
+    long long dif = -LLONG_MAX; // Initialize dif to maximum value
+    long long closest = LLONG_MAX; // Initialize closest to maximum value
+    Node* candidat = root;
+    std::unordered_map<long long, long long> map;
+    while (candidat) {
+        long long current_dif = candidat->key - n; // Calculate difference from current node to n
+        if(current_dif <= 0 && std::abs(current_dif) <= std::abs(dif))
         {
-            if(candidat->right->key-n<=dif && candidat->right->key-n<=0)
-            {
-                afis=candidat->right;
-                dif=candidat->right->key-n;
-                candidat=candidat->right;
-            }
-            else
-                candidat=candidat->right;
+            closest=candidat->key;
+            dif=current_dif;
+        }
+        if (candidat->key > n) {
+            candidat = candidat->left; // Traverse left subtree
+        } else {
+            candidat = candidat->right; // Traverse right subtree
         }
     }
-    return afis->key;
+
+    return closest; // Return closest or sentinel value if not found
 }
+
 Node* predecesor(long long n, Node* root)
 {
     Node* node= search(n,root);
