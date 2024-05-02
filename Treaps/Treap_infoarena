@@ -67,7 +67,7 @@ Treap* insert(Treap* root, long long key)
         root->left = insert(root->left, key);
 
         // proprietatea de heap
-        if (root->left->p > root->p)
+        if (root->left->p >= root->p)
             root = rot_right(root);
     }
     else
@@ -119,7 +119,7 @@ Treap* Delete(Treap* root, long long key)
     }
 
         // daca ambii copii sunt nuli
-    else if (root->left->p < root->right->p)
+    else if (root->left->p <= root->right->p)
     {
         root = rot_left(root);
         root->left = Delete(root->left, key);
