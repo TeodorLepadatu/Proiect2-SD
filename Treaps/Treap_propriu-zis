@@ -80,7 +80,7 @@ Treap* insert(Treap* root, int key,int val)
         root->right = insert(root->right, key, val);
 
         // proprietatea de heap se rezolva cu rotatie
-        if (root->right->p > root->p)
+        if (root->right->p >= root->p)
             root = rot_left(root);
     }
     return root;
@@ -124,7 +124,7 @@ Treap* Delete(Treap* root, int key)
     }
 
         // daca ambii copii sunt nuli
-    else if (root->left->p < root->right->p)
+    else if (root->left->p <= root->right->p)
     {
         root = rot_left(root);
         root->left = Delete(root->left, key);
