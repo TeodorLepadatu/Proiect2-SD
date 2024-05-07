@@ -361,55 +361,55 @@ Node* erase(long long n, Node* root, Node*aux)
     return root;
 }
 
-int main() {
-    Node* root=NULL;
-    long long q;
-    fin>>q;
-    long long type;
-    for(long long i=1;i<=q;i++)
-    {
-        fin>>type;
-        if(type==1)
-        {
-            long long x;
-            fin>>x;
-            root=insert(x,root);
-        }
-        else if(type==2)
-        {
-            long long x;
-            fin>>x;
-            root= erase(x,root,root);
-        }
-        else if(type==3)
-        {
-            long long x;
-            fin>>x;
-            Node* test= search(x,root);
-            if(test)
-                fout<<1<<std::endl;
-            else
-                fout<<0<<std::endl;
-        }
-        else if(type==4)
-        {
-            long long x;
-            fin>>x;
-            fout<<fix_mai_mic(x,root)<<std::endl;
-        }
-        else if(type==5)
-        {
-            long long x;
-            fin>>x;
-            fout<<fix_mai_mare(x,root)<<std::endl;
-        }
-        else if(type==6)
-        {
-            long long x,y;
-            fin>>x>>y;
-            afis_interval(x,y,root);
-            fout<<std::endl;
-        }
-    }
-    return 0;
-}
+    // int main() {
+    //     Node* root=NULL;
+    //     long long q;
+    //     fin>>q;
+    //     long long type;
+    //     for(long long i=1;i<=q;i++)
+    //     {
+    //         fin>>type;
+    //         if(type==1)
+    //         {
+    //             long long x;
+    //             fin>>x;
+    //             root=insert(x,root);
+    //         }
+    //         else if(type==2)
+    //         {
+    //             long long x;
+    //             fin>>x;
+    //             root= erase(x,root,root);
+    //         }
+    //         else if(type==3)
+    //         {
+    //             long long x;
+    //             fin>>x;
+    //             Node* test= search(x,root);
+    //             if(test)
+    //                 fout<<1<<std::endl;
+    //             else
+    //                 fout<<0<<std::endl;
+    //         }
+    //         else if(type==4)
+    //         {
+    //             long long x;
+    //             fin>>x;
+    //             fout<<fix_mai_mic(x,root)<<std::endl;
+    //         }
+    //         else if(type==5)
+    //         {
+    //             long long x;
+    //             fin>>x;
+    //             fout<<fix_mai_mare(x,root)<<std::endl;
+    //         }
+    //         else if(type==6)
+    //         {
+    //             long long x,y;
+    //             fin>>x>>y;
+    //             afis_interval(x,y,root);
+    //             fout<<std::endl;
+    //         }
+    //     }
+    //     return 0;
+    // }

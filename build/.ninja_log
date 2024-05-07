@@ -1,0 +1,4 @@
+# ninja log v6
+1	406	1715016161852438902	CMakeFiles/binary_search_trees.dir/src/avl.cpp.o	b3184ae342befe35
+1	437	1715016175236437848	CMakeFiles/binary_search_trees.dir/main.cpp.o	c90a21ee88c07e70
+437	477	1715016175673437814	binary_search_trees	b9a250dae1388d6

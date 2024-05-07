@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/alex/Documents/Uni/Proiect2-SD/build",
+  "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/main.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/main.cpp",
+  "file": "/home/alex/Documents/Uni/Proiect2-SD/main.cpp",
+  "output": "CMakeFiles/binary_search_trees.dir/main.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/Uni/Proiect2-SD/build",
+  "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/src/avl.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp",
+  "file": "/home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp",
+  "output": "CMakeFiles/binary_search_trees.dir/src/avl.cpp.o"
+}
+]
