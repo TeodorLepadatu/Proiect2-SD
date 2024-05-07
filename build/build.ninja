@@ -63,6 +63,27 @@ build CMakeFiles/binary_search_trees.dir/src/avl.cpp.o: CXX_COMPILER__binary_sea
   OBJECT_DIR = CMakeFiles/binary_search_trees.dir
   OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
 
+build CMakeFiles/binary_search_trees.dir/src/btree.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btree.cpp || cmake_object_order_depends_target_binary_search_trees
+  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/btree.cpp.o.d
+  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+  INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
+  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
+  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+
+build CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btreenode.cpp || cmake_object_order_depends_target_binary_search_trees
+  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o.d
+  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+  INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
+  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
+  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+
+build CMakeFiles/binary_search_trees.dir/src/treap.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/treap.cpp || cmake_object_order_depends_target_binary_search_trees
+  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/treap.cpp.o.d
+  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+  INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
+  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
+  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target binary_search_trees
@@ -71,7 +92,7 @@ build CMakeFiles/binary_search_trees.dir/src/avl.cpp.o: CXX_COMPILER__binary_sea
 #############################################
 # Link the executable binary_search_trees
 
-build binary_search_trees: CXX_EXECUTABLE_LINKER__binary_search_trees_Debug CMakeFiles/binary_search_trees.dir/main.cpp.o CMakeFiles/binary_search_trees.dir/src/avl.cpp.o
+build binary_search_trees: CXX_EXECUTABLE_LINKER__binary_search_trees_Debug CMakeFiles/binary_search_trees.dir/main.cpp.o CMakeFiles/binary_search_trees.dir/src/avl.cpp.o CMakeFiles/binary_search_trees.dir/src/btree.cpp.o CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o CMakeFiles/binary_search_trees.dir/src/treap.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/binary_search_trees.dir
   POST_BUILD = :

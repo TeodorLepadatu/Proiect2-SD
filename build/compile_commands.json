@@ -10,5 +10,23 @@
   "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/src/avl.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp",
   "file": "/home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp",
   "output": "CMakeFiles/binary_search_trees.dir/src/avl.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/Uni/Proiect2-SD/build",
+  "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/src/btree.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/src/btree.cpp",
+  "file": "/home/alex/Documents/Uni/Proiect2-SD/src/btree.cpp",
+  "output": "CMakeFiles/binary_search_trees.dir/src/btree.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/Uni/Proiect2-SD/build",
+  "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/src/btreenode.cpp",
+  "file": "/home/alex/Documents/Uni/Proiect2-SD/src/btreenode.cpp",
+  "output": "CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/Uni/Proiect2-SD/build",
+  "command": "/usr/bin/c++ -I/home/alex/Documents/Uni/Proiect2-SD/include -g -std=c++23 -Wall -Wextra -pedantic -o CMakeFiles/binary_search_trees.dir/src/treap.cpp.o -c /home/alex/Documents/Uni/Proiect2-SD/src/treap.cpp",
+  "file": "/home/alex/Documents/Uni/Proiect2-SD/src/treap.cpp",
+  "output": "CMakeFiles/binary_search_trees.dir/src/treap.cpp.o"
 }
 ]

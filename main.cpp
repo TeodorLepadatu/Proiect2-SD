@@ -1,27 +1,56 @@
 #include <iostream>
 
 #include "avl.hpp"
-#include "extra/AVL.cpp"
+#include "btree.hpp"
+#include "treap.hpp"
+
+#include <fstream>
+#include <iostream>
 
 int main()
 {
 	AVL avl;
-	avl.Insert(11);
-	avl.Insert(17);
-	avl.Insert(4);
-	avl.Insert(5);
-	avl.Insert(18);
-	avl.Insert(8);
-	avl.Insert(12);
+	BTree btree(4);
+	Treap treap;
 
-	Node* root = NULL;
-	root = insert(11, root);
-	root = insert(17, root);
-	root = insert(4, root);
-	root = insert(5, root);
-	root = insert(18, root);
-	root = insert(8, root);
-	root = insert(12, root);
+	std::ifstream in("input.txt");
+	std::ofstream out_avl("output_avl.txt");
+	std::ofstream out_btree("output_btree.txt");
+	std::ofstream out_treap("output_treap.txt");
+
+	long long n;
+	in >> n;
+	long long min;
+	long long max;
+	
+	for (long long i = 0; i < n; ++i) {
+		long long key;
+		in >> key;
+		avl.Insert(key);
+		btree.Insert(key);
+		treap.Insert(key);
+
+		if (i == 0) {
+			min = key;
+			max = key;
+		} else {
+			if (key < min) {
+				min = key;
+			}
+			if (key > max) {
+				max = key;
+			}
+		}
+	}
+
+	avl.PrintBetween(min, max, out_avl);
+	btree.PrintBetween(min, max, out_btree);
+	treap.PrintBetween(min, max, out_treap);
+
+	in.close();
+	out_avl.close();
+	out_btree.close();
+	out_treap.close();
 
 	return 0;
 }

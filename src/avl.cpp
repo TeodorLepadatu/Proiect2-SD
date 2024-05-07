@@ -1,9 +1,6 @@
 #include "avl.hpp"
 
-AVL::AVL()
-{
-	root_ = nullptr;
-}
+AVL::AVL() : root_(nullptr) {}
 
 void AVL::Insert(const long long key)
 {

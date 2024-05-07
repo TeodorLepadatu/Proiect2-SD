@@ -351,7 +351,7 @@ void BTreeNode::PrintBetween(const long long key1, const long long key2, std::os
 				children_[i]->PrintBetween(key1, key2, os);
 			}
 			if (keys_[i] <= key2) {
-				os << " " << keys_[i];
+				os << keys_[i] << " ";
 			}
 		
 		}
