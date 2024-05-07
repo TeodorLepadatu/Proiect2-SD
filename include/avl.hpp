@@ -6,14 +6,16 @@
 #include <ostream>
 
 class AVL {
+	struct Node;
+
 public:
 	AVL();
 
 	void Insert(const long long key);
 	void Erase(const long long key);
-	bool Search(const long long key) const;
-	std::pair<bool, long long> SearchSmaller(const long long key) const;
-	std::pair<bool, long long> SearchGreater(const long long key) const;
+	Node* Search(const long long key) const;
+	Node* SearchSmaller(const long long key) const;
+	Node* SearchGreater(const long long key) const;
 	void PrintBetween(const long long key1, const long long key2, std::ostream &os);
 
 private:
@@ -26,10 +28,10 @@ private:
 
 	Node *root_;
 
-	Node* InsertNode(const long long key, Node *root);
-	Node* EraseNode(const long long key, Node *root, Node *original_root);
-	Node* SearchNode(const long long key, Node *root) const;
-	void PrintBetweenRecursive(const long long key1, const long long key2, Node *root, std::ostream &os);
+	Node* Insert(const long long key, Node *root);
+	Node* Erase(const long long key, Node *root, Node *original_root);
+	Node* Search(const long long key, Node *root) const;
+	void PrintBetween(const long long key1, const long long key2, Node *root, std::ostream &os);
 
 	Node* RotateLeft(Node *root);
 	Node* RotateRight(Node *root);

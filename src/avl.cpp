@@ -7,27 +7,26 @@ AVL::AVL()
 
 void AVL::Insert(const long long key)
 {
-	root_ = InsertNode(key, root_);
+	root_ = Insert(key, root_);
 }
 
 void AVL::Erase(const long long key)
 {
-	root_ = EraseNode(key, root_, root_);
+	root_ = Erase(key, root_, root_);
 }
 
-bool AVL::Search(const long long key) const
+AVL::Node* AVL::Search(const long long key) const
 {
-	return SearchNode(key, root_) != nullptr;
+	return Search(key, root_);
 }
 
-std::pair<bool, long long> AVL::SearchSmaller(const long long key) const
+AVL::Node* AVL::SearchSmaller(const long long key) const
 {
 	if (root_ == nullptr) {
-		return {false, 0};
+		return nullptr;
 	}
 
-	bool found = false;
-	long long result;
+	Node *result = nullptr;
 	long long diff = std::numeric_limits<long long>::max();
 	Node *current = root_;
 
@@ -36,8 +35,7 @@ std::pair<bool, long long> AVL::SearchSmaller(const long long key) const
 
 		if (current_diff >= 0 && current_diff <= diff) {
 			diff = current_diff;
-			result = current->key;
-			found = true;
+			result = current;
 		}
 
 		if (current->key > key) {
@@ -47,17 +45,16 @@ std::pair<bool, long long> AVL::SearchSmaller(const long long key) const
 		}
 	}
 
-	return {found, result};
+	return result;
 }
 
-std::pair<bool, long long> AVL::SearchGreater(const long long key) const
+AVL::Node* AVL::SearchGreater(const long long key) const
 {
 	if (root_ == nullptr) {
-		return {false, 0};
+		return nullptr;
 	}
 
-	bool found = false;
-	long long result;
+	Node *result = nullptr;
 	long long diff = std::numeric_limits<long long>::max();
 	Node *current = root_;
 
@@ -66,8 +63,7 @@ std::pair<bool, long long> AVL::SearchGreater(const long long key) const
 
 		if (current_diff >= 0 && current_diff <= diff) {
 			diff = current_diff;
-			result = current->key;
-			found = true;
+			result = current;
 		}
 
 		if (current->key > key) {
@@ -77,24 +73,24 @@ std::pair<bool, long long> AVL::SearchGreater(const long long key) const
 		}
 	}
 
-	return {found, result};
+	return result;
 }
 
 void AVL::PrintBetween(const long long key1, const long long key2, std::ostream &os)
 {
-	PrintBetweenRecursive(key1, key2, root_, os);
+	PrintBetween(key1, key2, root_, os);
 }
 
-AVL::Node* AVL::InsertNode(const long long key, Node *root)
+AVL::Node* AVL::Insert(const long long key, Node *root)
 {
 	if (root == nullptr) {
 		return new Node{key, 1, nullptr, nullptr};
 	}
 
 	if (key < root->key) {
-		root->left = InsertNode(key, root->left);
+		root->left = Insert(key, root->left);
 	} else if (root->key < key) {
-		root->right = InsertNode(key, root->right);
+		root->right = Insert(key, root->right);
 	} else {
 		return root;
 	}
@@ -127,16 +123,16 @@ AVL::Node* AVL::InsertNode(const long long key, Node *root)
 	return root;
 }
 
-AVL::Node* AVL::EraseNode(const long long key, Node *root, Node *original_root)
+AVL::Node* AVL::Erase(const long long key, Node *root, Node *original_root)
 {
 	if (root == nullptr) {
 		return root;
 	}
 
 	if (key < root->key) {
-		root->left = EraseNode(key, root->left, original_root);
+		root->left = Erase(key, root->left, original_root);
 	} else if (key > root->key) {
-		root->right = EraseNode(key, root->right, original_root);
+		root->right = Erase(key, root->right, original_root);
 	} else {
 		if (root->left == nullptr || root->right == nullptr) {
 			// One child or no child
@@ -157,7 +153,7 @@ AVL::Node* AVL::EraseNode(const long long key, Node *root, Node *original_root)
 			Node *temp = GetSuccessor(root->key, original_root);
 
 			root->key = temp->key;
-			root->right = EraseNode(temp->key, root->right, original_root);
+			root->right = Erase(temp->key, root->right, original_root);
 
 			free(temp);
 		}
@@ -196,7 +192,7 @@ AVL::Node* AVL::EraseNode(const long long key, Node *root, Node *original_root)
 	return root;
 }
 
-AVL::Node* AVL::SearchNode(const long long key, Node *root) const
+AVL::Node* AVL::Search(const long long key, Node *root) const
 {
 	while (root != nullptr && root->key != key) {
 		if (key > root->key) {
@@ -213,14 +209,14 @@ AVL::Node* AVL::SearchNode(const long long key, Node *root) const
 	}
 }
 
-void AVL::PrintBetweenRecursive(const long long key1, const long long key2, Node *root, std::ostream &os)
+void AVL::PrintBetween(const long long key1, const long long key2, Node *root, std::ostream &os)
 {
 	if (root == nullptr) {
 		return;
 	}
 
 	if (key1 < root->key) {
-		PrintBetweenRecursive(key1, key2, root->left, os);
+		PrintBetween(key1, key2, root->left, os);
 	}
 
 	if (key1 <= root->key && root->key <= key2) {
@@ -228,7 +224,7 @@ void AVL::PrintBetweenRecursive(const long long key1, const long long key2, Node
 	}
 
 	if (root->key < key2) {
-		PrintBetweenRecursive(key1, key2, root->right, os);
+		PrintBetween(key1, key2, root->right, os);
 	}
 }
 
@@ -273,7 +269,7 @@ long long AVL::GetBalance(const Node *node) const
 
 AVL::Node* AVL::GetSuccessor(const long long key, Node *root) const
 {
-	Node *successor = SearchNode(key, root);
+	Node *successor = Search(key, root);
 
 	if (successor->right != nullptr) {
 		successor = successor->right;
