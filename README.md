@@ -25,7 +25,8 @@ Au fost făcute câte 12 rulări pentru 10^3, 10^5 și 10^6 numere, pentru fieca
 ### Linkuri
 
 link prezentare: https://tinyurl.com/prezentarecopacei
-link date raw: https://tinyurl.com/datecopacei
+
+link date teste: https://tinyurl.com/datecopacei
 
 ### Licență
 Acest proiect este licențiat sub licența [MIT](https://opensource.org/licenses/MIT). Pentru mai multe detalii, consultați fișierul LICENSE.md.
