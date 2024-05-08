@@ -5,7 +5,7 @@ Vă încântăm cu un alt proiect deosebit marca Roxana Asavei, Teodor Lepădatu
 - BTree (cu t = 4)
 - Treap (cu prioritatea generată aleator)
 
-Pentru fiecare, am implementat operațiile de inserare, ștergere și cătuare (exactă, cel mai mare număr mai mic decât query și cel mai mic număr mai mare decât query) - mai precis, operațiile de pe infoarena (https://www.infoarena.ro/problema/abce). Algoritmii originali au luat toți 100 de puncte. Algoritmii originali se găsesc în directorul extra/.
+Pentru fiecare, am implementat operațiile de inserare, ștergere și cătuare (exactă, cel mai mare număr mai mic decât query și cel mai mic număr mai mare decât query) - mai precis, operațiile de pe [infoarena](https://www.infoarena.ro/problema/abce). Algoritmii originali au luat toți 100 de puncte. Algoritmii originali se găsesc în directorul extra/.
 
 ### Testare
 
