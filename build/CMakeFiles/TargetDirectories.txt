@@ -1,7 +1,0 @@
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/proiect2sd.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/edit_cache.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/rebuild_cache.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/list_install_components.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/install.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/install/local.dir
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/install/strip.dir
