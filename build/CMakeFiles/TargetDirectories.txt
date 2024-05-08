@@ -1,4 +1,4 @@
-/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/binary_search_trees.dir
+/home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/proiect2sd.dir
 /home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/edit_cache.dir
 /home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/rebuild_cache.dir
 /home/alex/Documents/Uni/Proiect2-SD/build/CMakeFiles/list_install_components.dir

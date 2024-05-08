@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: binary_search_trees
+# Project: proiect2sd
 # Configurations: Debug
 # =============================================================================
 
@@ -41,64 +41,64 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/alex/Documents/Uni/Proiect2-SD/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target binary_search_trees
+# Object build statements for EXECUTABLE target proiect2sd
 
 
 #############################################
-# Order-only phony target for binary_search_trees
+# Order-only phony target for proiect2sd
 
-build cmake_object_order_depends_target_binary_search_trees: phony || .
+build cmake_object_order_depends_target_proiect2sd: phony || .
 
-build CMakeFiles/binary_search_trees.dir/main.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/main.cpp || cmake_object_order_depends_target_binary_search_trees
-  DEP_FILE = CMakeFiles/binary_search_trees.dir/main.cpp.o.d
-  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+build CMakeFiles/proiect2sd.dir/main.cpp.o: CXX_COMPILER__proiect2sd_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/main.cpp || cmake_object_order_depends_target_proiect2sd
+  DEP_FILE = CMakeFiles/proiect2sd.dir/main.cpp.o.d
+  FLAGS = -g -std=gnu++11
   INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
-  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
+  OBJECT_FILE_DIR = CMakeFiles/proiect2sd.dir
 
-build CMakeFiles/binary_search_trees.dir/src/avl.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp || cmake_object_order_depends_target_binary_search_trees
-  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/avl.cpp.o.d
-  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+build CMakeFiles/proiect2sd.dir/src/avl.cpp.o: CXX_COMPILER__proiect2sd_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/avl.cpp || cmake_object_order_depends_target_proiect2sd
+  DEP_FILE = CMakeFiles/proiect2sd.dir/src/avl.cpp.o.d
+  FLAGS = -g -std=gnu++11
   INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
-  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
+  OBJECT_FILE_DIR = CMakeFiles/proiect2sd.dir/src
 
-build CMakeFiles/binary_search_trees.dir/src/btree.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btree.cpp || cmake_object_order_depends_target_binary_search_trees
-  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/btree.cpp.o.d
-  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+build CMakeFiles/proiect2sd.dir/src/btree.cpp.o: CXX_COMPILER__proiect2sd_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btree.cpp || cmake_object_order_depends_target_proiect2sd
+  DEP_FILE = CMakeFiles/proiect2sd.dir/src/btree.cpp.o.d
+  FLAGS = -g -std=gnu++11
   INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
-  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
+  OBJECT_FILE_DIR = CMakeFiles/proiect2sd.dir/src
 
-build CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btreenode.cpp || cmake_object_order_depends_target_binary_search_trees
-  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o.d
-  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+build CMakeFiles/proiect2sd.dir/src/btreenode.cpp.o: CXX_COMPILER__proiect2sd_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/btreenode.cpp || cmake_object_order_depends_target_proiect2sd
+  DEP_FILE = CMakeFiles/proiect2sd.dir/src/btreenode.cpp.o.d
+  FLAGS = -g -std=gnu++11
   INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
-  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
+  OBJECT_FILE_DIR = CMakeFiles/proiect2sd.dir/src
 
-build CMakeFiles/binary_search_trees.dir/src/treap.cpp.o: CXX_COMPILER__binary_search_trees_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/treap.cpp || cmake_object_order_depends_target_binary_search_trees
-  DEP_FILE = CMakeFiles/binary_search_trees.dir/src/treap.cpp.o.d
-  FLAGS = -g -std=c++23 -Wall -Wextra -pedantic
+build CMakeFiles/proiect2sd.dir/src/treap.cpp.o: CXX_COMPILER__proiect2sd_unscanned_Debug /home/alex/Documents/Uni/Proiect2-SD/src/treap.cpp || cmake_object_order_depends_target_proiect2sd
+  DEP_FILE = CMakeFiles/proiect2sd.dir/src/treap.cpp.o.d
+  FLAGS = -g -std=gnu++11
   INCLUDES = -I/home/alex/Documents/Uni/Proiect2-SD/include
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
-  OBJECT_FILE_DIR = CMakeFiles/binary_search_trees.dir/src
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
+  OBJECT_FILE_DIR = CMakeFiles/proiect2sd.dir/src
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target binary_search_trees
+# Link build statements for EXECUTABLE target proiect2sd
 
 
 #############################################
-# Link the executable binary_search_trees
+# Link the executable proiect2sd
 
-build binary_search_trees: CXX_EXECUTABLE_LINKER__binary_search_trees_Debug CMakeFiles/binary_search_trees.dir/main.cpp.o CMakeFiles/binary_search_trees.dir/src/avl.cpp.o CMakeFiles/binary_search_trees.dir/src/btree.cpp.o CMakeFiles/binary_search_trees.dir/src/btreenode.cpp.o CMakeFiles/binary_search_trees.dir/src/treap.cpp.o
+build proiect2sd: CXX_EXECUTABLE_LINKER__proiect2sd_Debug CMakeFiles/proiect2sd.dir/main.cpp.o CMakeFiles/proiect2sd.dir/src/avl.cpp.o CMakeFiles/proiect2sd.dir/src/btree.cpp.o CMakeFiles/proiect2sd.dir/src/btreenode.cpp.o CMakeFiles/proiect2sd.dir/src/treap.cpp.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/binary_search_trees.dir
+  OBJECT_DIR = CMakeFiles/proiect2sd.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = binary_search_trees
-  TARGET_PDB = binary_search_trees.dbg
+  TARGET_FILE = proiect2sd
+  TARGET_PDB = proiect2sd.dbg
 
 
 #############################################
@@ -177,7 +177,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 #############################################
 # Folder: /home/alex/Documents/Uni/Proiect2-SD/build
 
-build all: phony binary_search_trees
+build all: phony proiect2sd
 
 # =============================================================================
 # Built-in targets

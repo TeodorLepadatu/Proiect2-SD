@@ -277,7 +277,6 @@ std::pair<bool, long long> BTreeNode::SearchSmaller(const long long key)
 		} else {
 			return children_[0]->SearchSmaller(key);
 		}
-	
 	} else {
 		if (leaf_ == true) {
 			return std::make_pair(true, keys_[rightmost_key]);

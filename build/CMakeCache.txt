@@ -144,7 +144,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=binary_search_trees
+CMAKE_PROJECT_NAME:STATIC=proiect2sd
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -228,6 +228,15 @@ binary_search_trees_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 binary_search_trees_SOURCE_DIR:STATIC=/home/alex/Documents/Uni/Proiect2-SD
+
+//Value Computed by CMake
+proiect2sd_BINARY_DIR:STATIC=/home/alex/Documents/Uni/Proiect2-SD/build
+
+//Value Computed by CMake
+proiect2sd_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+proiect2sd_SOURCE_DIR:STATIC=/home/alex/Documents/Uni/Proiect2-SD
 
 
 ########################

@@ -18,6 +18,8 @@ public:
 	Node* SearchGreater(const long long key) const;
 	void PrintBetween(const long long key1, const long long key2, std::ostream &os);
 
+	long long GetKey(Node *node) const;
+
 private:
 	struct Node {
 		long long key;

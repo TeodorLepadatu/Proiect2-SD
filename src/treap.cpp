@@ -78,6 +78,14 @@ void Treap::PrintBetween(const long long key1, const long long key2, std::ostrea
 	PrintBetween(key1, key2, root_, os);
 }
 
+long long Treap::GetKey(Node* node) const
+{
+	if (node == nullptr) {
+		return std::numeric_limits<long long>::min();
+	}
+	return node->key;
+}
+
 Treap::Node* Treap::Insert(const long long key, Node* root)
 {
 	if (root == nullptr) {

@@ -143,16 +143,12 @@ AVL::Node* AVL::Erase(const long long key, Node *root, Node *original_root)
 				// One child
 				*root = *temp;
 			}
-
-			free(temp);
 		} else {
 			// Two children
 			Node *temp = GetSuccessor(root->key, original_root);
 
 			root->key = temp->key;
 			root->right = Erase(temp->key, root->right, original_root);
-
-			free(temp);
 		}
 	}
 
@@ -223,6 +219,14 @@ void AVL::PrintBetween(const long long key1, const long long key2, Node *root, s
 	if (root->key < key2) {
 		PrintBetween(key1, key2, root->right, os);
 	}
+}
+
+long long AVL::GetKey(Node *node) const
+{
+	if (node == nullptr) {
+		return std::numeric_limits<long long>::min();
+	}
+	return node->key;
 }
 
 AVL::Node* AVL::RotateLeft(Node *root)
